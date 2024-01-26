@@ -1,26 +1,24 @@
+# ANÁLISE ESTATÍSTICA - A INFLUÊNCIA DA LONGEVIDADE DE UM TÉCNICO EM UM TIME NO BRASILEIRÃO DE 2019
 
-## ANÁLISE ESTATÍSTICA - A INFLUÊNCIA DA LONGEVIDADE DE UM TÉCNICO EM UM TIME NO BRASILEIRÃO DE 2019
-### "Lógica de programação 2 com Python" - ADA Tech & IFood 🎲
+## 👥 Integrantes: 
 
-## Integrantes: 👥
+- Alan Gonçalves
+- Élen Silva Almeida
+- Gabriel Matina
+- Gustavo Dell Anhol Oliveira
+- Patrick Kwan
 
--   #### Alan Gonçalves
--   #### Élen Silva Almeida
--   #### Gabriel Matina
--   #### Gustavo Dell Anhol Oliveira
--   #### Patrick Kwan
-
-## Descrição do problema🤔
+## 🤔 Descrição do problema
 
 Uma posição _volátil_, no futebol (tanto no Brasil quanto fora), é a posição de técnico. Uma prática comum é substituir o treinador após alguns resultados negativos. Naturalmente, um time que não troca o técnico não é garantia de sucesso no campeonato. Assim, surge a dúvida: 
 
-<hr>
-<div style="text-align:center; font-size:20px">
-Será que, <b>em geral</b>, times com técnicos mais longevos ficam em uma posição melhor na tabela, no fim do campeonato?    
-</div>
-<hr>
+<div align = "center">
+    
+### Será que, **em geral**, times com técnicos mais longevos ficam em uma posição melhor na tabela, no fim do campeonato?    
 
-## Manipulando os Dados🎲
+</div>
+
+## 🎲 Manipulando os Dados
 
 Para _atacar_ esse problema, será disponibilizado um arquivo json com todos os dados do Campeonato Brasileiro de 2019. Para ler um arquivo json, basta importar o módulo 'pandas' com o comando:  ```import pandas as pd```. Para ler um arquivo json, utilize o método:  
 ```dados = pd.read_json('nome_do_arquivo.json') ```
@@ -42,8 +40,9 @@ import pandas as pd
 dados = pd.read_json('brasileirao-2019.json')
 dados
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/d35f7b9a-6636-4837-b045-b84186ee84a2)
 
-## Tratamento dos dados📝:
+## 📝 Tratamento dos dados:
 
 Para começar a nossa análise primeiro começamos a tratar os dados que nos foram fornecidos. Para obter a resposta, precisamos dos seguintes dados:
 
@@ -79,6 +78,9 @@ for rodada in dados: #1 ao 38
 lista_tecnicos = list(set(lista_tecnicos)) #Elimina as duplicas utilizando o set
 lista_tecnicos
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/3dee5557-0b18-4356-bc7c-95e356032cbf)
+
+
 #### Encontrando os times
 
 Com isso, da mesma forma, também podemos criar uma lista com todos os times. 
@@ -97,6 +99,7 @@ for rodada in dados: #1 ao 38
 lista_times = list(set(lista_times)) #Elimina as duplicas utilizando o set
 lista_times
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/14825856-5620-4c0b-bc6f-c244cb6c3918)
 
 E com essa informação, conseguimos criar uma estrutura de dados para relacionar o nome do time, os técnicos e todos os jogos que os mesmos atuaram entre si
 
@@ -128,6 +131,7 @@ for rodada in dados: #1 ao 38
         
 partidas
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/dd492c6c-95f2-4c7b-9489-18e08ba31070)
 
 Com o dicionário ```partidas``` preenchido, filtramos os técnicos, deixando somente os mais longevos de cada time
 
@@ -143,6 +147,8 @@ for time in lista_times:
             mais_longevo[time] = {coach: partida_mais_longeva}
 mais_longevo
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/941667dc-1bec-45ca-982c-f3cef1df9add)
+
 
 Também precisamos das pontuações do time para definirmos a classificação, com isso criamos uma outra estrutura de dados chamada ```tabela_times``` que apenas extrai os respectivos dados do dataframe e os armazena
 
@@ -219,6 +225,8 @@ for rodada in dados: #1 ao 38
 
 tabela_times
 ```
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/14041c53-7476-4e2b-8933-cb8ea9eb3ae2)
+
 Com a pontuação definida, criamos a lista ```classificacao``` para definir a classificação dos times no campeonato utilizando o algoritimo de ordenação ```Bubble Sort``` para ordenar a lista do menor para o maior baseado em suas pontuações 
 
 ```
@@ -246,6 +254,9 @@ for i in range(1, len(classificacao)):
 classificacao = list(enumerate(classificacao))
 classificacao
 ```
+
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/80afb405-1427-48c9-b40f-bdcbace2c724)
+
 
 No final observamos que houveram algumas situações de empates:
 ```
@@ -298,6 +309,9 @@ for row in dados_impressao:
     print(f"{row[0]:<3} | {row[1][0]:<15} | {row[1][1]:<10} | {row[1][2]:<10} | {row[1][3]:<10} | {row[1][4]:<10} | {row[1][5]:<15} | {row[1][6]:<15} | {row[1][7]}")
 ```
 
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/3f1eb259-f056-451d-a93b-4b89cd2d2c2d)
+
+
 E utilizando as informações tratadas anteriormente, também conseguimos visualizar os times em ordem de classificação por pontos e seus respectivos técnicos mais longevos com a quantidade de partidas que o mesmo atuou no time
 
 ```
@@ -309,6 +323,8 @@ for i in range(1, len(classificacao)):
             if classificacao[i][1][0] == chave:
                 print(f"Colocação:{classificacao[i][0]:2d} | {classificacao[i][1][0]:<15} | Técnico mais longevo:   {treinador:<28} | Qtde de partidas: {mais_longevo[chave][treinador]}")
 ```
+
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/052e9738-9fce-4c06-bf31-2114d38db4c2)
 
 Com as classificações e a quantidade de partidas que o técnico mais longevo atuo no time que fiocu na determinada classificação, podemos relacionar esses dados em um grafico de linhas para observar se há alguma relação entre a longevidade dos técnicos nos times e sua classificação
 
@@ -345,13 +361,19 @@ plt.plot(dados_plotagem_x, dados_plotagem_y, linestyle='--', marker='o', color='
 plt.show()
 ```
 
-## RECAPITULANDO
+![image](https://github.com/gudaoliveira/analise-de-dados-campeonato-brasileiro-2019/assets/20359615/2c717428-2c8f-47d8-a63b-028b7e23e99f)
+
+
+## 🔁 Recapitulando
 
 Precisávamos responder a seguinte pergunta:
-<div style="text-align:center; font-size:20px">
-Será que, <b>em geral</b>, times com técnicos mais longevos ficam em uma posição melhor na tabela, no fim do campeonato?    
+
+<div align = "center">
+    
+### Será que, **em geral**, times com técnicos mais longevos ficam em uma posição melhor na tabela, no fim do campeonato?    
+
 </div>
-<br>
+
 Com isso em mente, e analisando o gráfico, podemos concluir que:
 
 - Mesmo times com técnicos pouco longevos, como o 3º lugar, conseguem se classificar bem no campeonato
@@ -359,6 +381,6 @@ Com isso em mente, e analisando o gráfico, podemos concluir que:
 - O 12º lugar, mesmo com um dos técnicos mais longevos da campeonato, não teve uma colocação boa
 - De fato, alguns times com os técnicos menos longevos do campeonato ficaram nas últimas posições
 
-### Conclusão
+## 🧑‍🔬 Conclusão
 
 Não é possível encontrar uma relação direta entre longevidade do técnico no time e sua classificação. Entendemos que, isso se dá por que futebol é um esporte extremamente estatístico e a qualidade de um time depende de inúmeras variáves e situações, no entanto, neste caso específico, podemos notar que os técnicos mais longevos das 10 melhores colocações jogaram pelo menos metade do campeonato, o que nos sugere que sim, a longevidade influencia positivamente, mas não é determinante para a colocação final do time 
