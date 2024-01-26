@@ -2,11 +2,11 @@
 
 ## 👥 Integrantes: 
 
-- Alan Gonçalves
-- Élen Silva Almeida
-- Gabriel Matina
-- Gustavo Dell Anhol Oliveira
-- Patrick Kwan
+- [Alan Gonçalves](https://github.com/alansgoncalves)
+- [Élen Silva Almeida](https://github.com/Lely0sa)
+- [Gabriel Matina](https://github.com/gabrielmatina)
+- [Gustavo Dell Anhol Oliveira](https://github.com/gudaoliveira)
+- [Patrick Kwan](https://github.com/ptkwan)
 
 ## 🤔 Descrição do problema
 
